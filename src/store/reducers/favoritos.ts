@@ -2,27 +2,27 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { Produto } from '../../App'
 
 type FavoritosState = {
-  itens: Produto[]
+    itens: Produto[]
 }
 
 const initialState: FavoritosState = {
-  itens: []
+    itens: []
 }
 
 //sliice
 const favoritosSlice = createSlice({
-  name: 'favoritos',
-  initialState,
-  reducers: {
-    alternarFavorito: (state, action: PayloadAction<Produto>) => {
-      const index = state.itens.findIndex((p) => p.id === action.payload.id)
-      if (index >= 0) {
-        state.itens.splice(index, 1)
-      } else {
-        state.itens.push(action.payload)
-      }
+    name: 'favoritos',
+    initialState,
+    reducers: {
+        alternarFavorito: (state, action: PayloadAction<Produto>) => {
+            const index = state.itens.findIndex((p) => p.id === action.payload.id)
+            if (index >= 0) {
+            state.itens.splice(index, 1)
+            } else {
+            state.itens.push(action.payload)
+            }
+        }
     }
-  }
 })
 
 export const { alternarFavorito } = favoritosSlice.actions
